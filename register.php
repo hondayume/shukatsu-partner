@@ -12,8 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         try {
             $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':password', $email, PDO::PARAM_STR);
-            $stmt->bindValue(':password', $hasued_password, PDO::PARAM_STR);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':password', $hashed_password, PDO::PARAM_STR);
             $stmt->execute();
             
             $message = "会員登録が完了しました！ログインしてください。";
@@ -38,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
     
     <form action="register.php" method="POST">
-        <label>メールアドレス: <input type="emeil" name="email" required></label><br><br>
+        <label>メールアドレス: <input type="email" name="email" required></label><br><br>
         <label>パスワード: <input type="password" name="password" required></label><br><br>
         <input type="submit" value="アカウントを作成する">
     </form>
     <br>
-    <a href="login.php>"すでにアカウントをお持ちの方（ログインへ）</a>
+    <a href="login.php">Eすでにアカウントをお持ちの方（ログインへ）</a>
 </body>
 </html>
